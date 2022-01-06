@@ -1,10 +1,5 @@
-FROM node:latest as node
+FROM node:16.13.1 as node
 WORKDIR /app
 COPY ./ .
-RUN npm install
-RUN npm update
-RUN npm install -g typescript
-
+RUN npm install -g @angular/cli
 EXPOSE 4200
-
-ENTRYPOINT npm start
