@@ -1,8 +1,8 @@
-##Uruchomienie
+## Uruchomienie
 
 W katalogu głównym wykonać polecenie: docker-compose up -d
 
-Podczas pierwszego uruchomienia należy poczekać około 4-5 min. Kontener central będzie się restartował do momentu
+Podczas pierwszego uruchomienia należy poczekać około 8 min. Kontener central oraz worker będzie się restartował do momentu
 pełnego załadowania się kontenera bazy danych.
 
 ## Schemat działania aplikacji
