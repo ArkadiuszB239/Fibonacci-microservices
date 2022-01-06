@@ -5,6 +5,8 @@ W katalogu głównym wykonać polecenie: docker-compose up -d
 Podczas pierwszego uruchomienia należy poczekać około 8 min. Kontener central oraz worker będzie się restartował do momentu
 pełnego załadowania się kontenera bazy danych.
 
+Następnie przechodzimy pod adres: [FrontApplication](http://localhost:4200/)
+
 ## Schemat działania aplikacji
 
 Aplikacja umożliwia wprowadzenie wartości n przez użytkownika, której zatwierdzenie spowoduje obliczenie n-tego wyrazu
