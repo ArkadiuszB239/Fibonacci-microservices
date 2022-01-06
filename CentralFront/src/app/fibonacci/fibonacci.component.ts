@@ -29,7 +29,7 @@ export class FibonacciComponent implements OnInit {
 
 
   calculateFiboValue(): void {
-    if (this.numberToAdd != 0) {
+    if (this.numberToAdd > 0) {
       this.fiboService.calcFiboValue(this.numberToAdd)
         .pipe(first())
         .subscribe({
@@ -44,6 +44,9 @@ export class FibonacciComponent implements OnInit {
             console.log(err)
           }
         })
+    } else {
+      this.failure = true;
+      this.success = false;
     }
   }
 
