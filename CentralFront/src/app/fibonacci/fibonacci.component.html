@@ -1,6 +1,6 @@
 <div class="text-center">
   <label for="customer_name">Podaj który wyraz ciągu chcesz obliczyć:</label>
-  <input type="number" id="customer_name" [(ngModel)]="numberToAdd">
+  <input type="number" id="customer_name" [(ngModel)]="numberToAdd" min="0">
   <button type="button" class="btn btn-primary" (click)="calculateFiboValue()">Dodaj</button><br />
   <h6 *ngIf="success" class="text-success">Poprawnie dodano wartość!</h6>
   <h6 *ngIf="failure" class="text-danger">Wystąpił błąd podczas dodawania wartości!</h6>
