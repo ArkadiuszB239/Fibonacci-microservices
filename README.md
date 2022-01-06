@@ -2,8 +2,10 @@
 
 W katalogu głównym wykonać polecenie: docker-compose up -d
 
-Podczas pierwszego uruchomienia należy poczekać około 8 min. Kontener central oraz worker będzie się restartował do momentu
-pełnego załadowania się kontenera bazy danych.
+Podczas pierwszego uruchomienia należy poczekać około 10 min. Kontener central oraz worker będzie się restartował do momentu
+pełnego załadowania się kontenera bazy danych. Kontener CentralFront i jego dependency ładuje się również około 10 min.
+
+Następnie przechodzimy pod adres: [FrontApplication](http://localhost:4200/)
 
 ## Schemat działania aplikacji
 
