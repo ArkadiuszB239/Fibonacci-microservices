@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: CentralApp
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:8080
+        healthCheckPath: /my-health-check
+        healthCheckInterval: 20s
+      config:
+        enabled: true
+        format: yaml
+        watch:
+          delay: 1000
+  datasource:
+    url: jdbc:mysql://mysql:3306/database?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect

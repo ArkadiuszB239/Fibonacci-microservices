@@ -1,0 +1,32 @@
+<div class="text-center">
+  <br /><br />
+  <h2>Schemat działania aplikacji</h2>
+  <h4>
+    Aplikacja umożliwia wprowadzenie wartości n przez użytkownika, której zatwierdzenie spowoduje obliczenie n-tego
+    wyrazu ciągu Fibonacciego. Wartość wysyłana jest do serwisu Central, który zapisuje ją w serwisie Redis.
+    Zapisane zostaną tylko wartości, które nie zostały już wcześniej obliczone.(Możemy zapisać dowolną liczbę wartości.
+    Następnie worker wczytuje co 15 sekund wszystkie nieprzetworzone wartości z serwisu Redis, obliczy wartości oraz odpowiednio zapisuje
+    je do bazy danych. Aplikacja Central umożliwia odczyt tych wartości z bazy danych. Aplikacja frontendowa co 10 sekund
+    pobiera z serwisu Central policzone wartości dla podanych wyrazów ciągu.
+  </h4>
+  <img src="assets/img/diagram.png" alt="diagram">
+
+  <br/><br/>
+  <h2>Zmiana konfiguracji i discovery client</h2>
+  <h3>Consul znajduje się pod adresem: <a href="http://localhost:8500/">Consul</a></h3>
+  <h4>
+    Możemy zmieniać konfigurację aplikacji w trybie runtime. Możemy zmienić częstotliwość procesowania danych przez
+    worker
+    tworząc w zakładce Key/Values katalog tak jak na rysunnku poniżej.(Ważna jest nazwa katalogu
+    "config/application/data"). Następnie pod kluczem scheduled.cron
+    możemy zdefiniować nowy cron, który zmieni czas co jaki włącza się procesowanie.
+  </h4>
+  <img src="assets/img/consul1.png" alt="diagram">
+  <br/><br/>
+  <h4>
+    Funkcja discovery client pozwala na monitoring aplikacji. Aplikacje podczas startu rejestrują swoją instancję i
+    dzięki wystawionemu w nich API consul monitoruje ich stan.
+  </h4>
+
+  <img src="assets/img/consul2.png" alt="diagram">
+</div>

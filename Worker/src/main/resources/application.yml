@@ -1,0 +1,4 @@
+properties:
+  firstProp: test123
+scheduled:
+  cron: 0/15 * * * * *

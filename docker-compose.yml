@@ -1,0 +1,72 @@
+version: '3.9'
+services:
+  central:
+    container_name: central
+    build: ./CentrailApplication
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - centralNetwork
+      - frontendNetwork
+    depends_on:
+      - consul
+      - redis
+      - mysql
+  worker:
+    container_name: worker
+    build: ./Worker
+    restart: always
+    networks:
+      - centralNetwork
+    depends_on:
+      - consul
+      - mysql
+      - redis
+  central-front:
+    container_name: central-front
+    build: ./CentralFront
+    restart: always
+    networks:
+      - frontendNetwork
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./CentralFront:/app
+    depends_on:
+      - central
+  consul:
+    container_name: consul
+    image: consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    restart: always
+    networks:
+      - centralNetwork
+    command: 'agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0'
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    networks:
+      - centralNetwork
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'database'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'admin'
+      MYSQL_ROOT_PASSWORD: 'admin'
+    ports:
+      - '3306:3306'
+    networks:
+      - centralNetwork
+networks:  
+  centralNetwork:    
+    driver: bridge
+  frontendNetwork:
+    driver: bridge
+    

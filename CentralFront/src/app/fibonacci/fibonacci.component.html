@@ -1,0 +1,27 @@
+<div class="text-center">
+  <label for="customer_name">Podaj który wyraz ciągu chcesz obliczyć:</label>
+  <input type="number" id="customer_name" [(ngModel)]="numberToAdd">
+  <button type="button" class="btn btn-primary" (click)="calculateFiboValue()">Dodaj</button><br />
+  <h6 *ngIf="success" class="text-success">Poprawnie dodano wartość!</h6>
+  <h6 *ngIf="failure" class="text-danger">Wystąpił błąd podczas dodawania wartości!</h6>
+  <h3>Po dodaniu wartości worker oblicza je co 15 sekund</h3>
+  <h3>Wartości pobierane są co 10 sekund</h3>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Number</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of fiboTable">
+    <td>{{item.id}}</td>
+    <td>{{item.value}}</td>
+    <td>{{item.calculatedValue}}</td>
+  </tr>
+  </tbody>
+</table>
+
